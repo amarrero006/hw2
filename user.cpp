@@ -1,4 +1,5 @@
 #include "user.h"
+#include <iomanip>
 using namespace std;
 
 User::User() : name_("unknown"), balance_(0.0), type_(1)
@@ -6,7 +7,7 @@ User::User() : name_("unknown"), balance_(0.0), type_(1)
 
 }
 User::User(std::string name, double balance, int type) :
-    name_(name), balance_(balance), type_(type)
+        name_(name), balance_(balance), type_(type)
 {
 
 }

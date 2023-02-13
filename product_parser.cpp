@@ -5,6 +5,7 @@
 #include "clothing.h"
 #include "movie.h"
 #include "util.h"
+#include "mydatastore.h"
 using namespace std;
 
 
@@ -85,10 +86,10 @@ ProductBookParser::ProductBookParser() : ProductParser()
 }
 
 Product* ProductBookParser::parseSpecificProduct(std::string category,
-        std::istream& is,
-        bool& error,
-        std::string& errorMsg,
-        int& lineno)
+                                                 std::istream& is,
+                                                 bool& error,
+                                                 std::string& errorMsg,
+                                                 int& lineno)
 {
     string myline;
     getline(is, myline);
@@ -130,8 +131,8 @@ std::string ProductBookParser::categoryID()
  */
 Product* ProductBookParser::makeProduct()
 {
-
-
+    Product* result = new Book(prodName_,price_,qty_,isbn_, author_);
+    return result;
 }
 
 
@@ -140,10 +141,10 @@ ProductClothingParser::ProductClothingParser()
 }
 
 Product* ProductClothingParser::parseSpecificProduct(std::string category,
-        std::istream& is,
-        bool& error,
-        std::string& errorMsg,
-        int& lineno)
+                                                     std::istream& is,
+                                                     bool& error,
+                                                     std::string& errorMsg,
+                                                     int& lineno)
 {
     string myline;
     getline(is, myline);
@@ -185,8 +186,8 @@ std::string ProductClothingParser::categoryID()
  */
 Product* ProductClothingParser::makeProduct()
 {
-
-
+    Product* result = new Clothing(prodName_,price_,qty_,size_,brand_);
+    return result;
 
 }
 
@@ -198,10 +199,10 @@ ProductMovieParser::ProductMovieParser()
 
 
 Product* ProductMovieParser::parseSpecificProduct(std::string category,
-        std::istream& is,
-        bool& error,
-        std::string& errorMsg,
-        int& lineno)
+                                                  std::istream& is,
+                                                  bool& error,
+                                                  std::string& errorMsg,
+                                                  int& lineno)
 {
     string myline;
     getline(is, myline);
@@ -245,6 +246,7 @@ std::string ProductMovieParser::categoryID()
  */
 Product* ProductMovieParser::makeProduct()
 {
-
+    Product* result = new Movie(prodName_, price_, qty_, genre_, rating_);
+    return result;
 
 }
